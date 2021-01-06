@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.QRFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.budiyev.android.codescanner.CodeScannerView
+            android:id="@+id/scannerView"
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            autoFocusButtonColor="@android:color/white"
+            autoFocusButtonVisible="true"
+            flashButtonColor="@android:color/white"
+            flashButtonVisible="true"
+            frameColor="@android:color/white"
+            frameCornersSize="50dp"
+            frameCornersRadius="30dp"
+            frameAspectRatioWidth="1"
+            android:elevation="30dp"
+            frameAspectRatioHeight="1"
+            frameSize="0.75"
+            frameThickness="2dp"
+            android:layout_margin="10dp"
+            maskColor="#77000000"/>
+        <TextView
+            android:text="Escanea el codigo QR en caja"
+            android:fontFamily="@font/amaranth"
+            android:textSize="25sp"
+            android:textColor="@color/teal_700"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</FrameLayout>

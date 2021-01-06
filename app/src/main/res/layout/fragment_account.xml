@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.AccountFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivAccountProfilePhoto"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/purple_700"/>
+            <Button
+                android:id="@+id/btnChangePhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cambiar foto"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="50dp"/>
+        </LinearLayout>
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/tvAccountName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:fontFamily="@font/amaranth"
+            android:textColor="@color/teal_700"
+            android:text="Name" />
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/tvAccountEmail"
+            android:fontFamily="@font/amaranth"
+            android:textColor="@color/purple_500"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="Email" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/amaranth"
+                android:textColor="@color/purple_500"
+                android:textSize="35sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="Membresía:"/>
+            <TextView
+                android:id="@+id/tvAccountMembership"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/amaranth"
+                android:textColor="@color/black"
+                android:textSize="35sp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_marginTop="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="#FF0000"
+            android:text="Cerrar sesion"/>
+    </LinearLayout>
+
+</FrameLayout>

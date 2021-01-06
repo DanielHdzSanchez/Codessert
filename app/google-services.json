@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "476607240307",
+    "project_id": "codessert-1b507",
+    "storage_bucket": "codessert-1b507.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476607240307:android:5cd28d6457cc7406ceb206",
+        "android_client_info": {
+          "package_name": "com.dan.codessert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476607240307-i8gf942ph73k7n6cmap6udic00dsh85b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA16G9Jyh2B0gc54b1OUae1aZ3MCELOr5w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476607240307-i8gf942ph73k7n6cmap6udic00dsh85b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
