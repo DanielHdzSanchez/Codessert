@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.dan.codessert.MainActivity
@@ -54,7 +55,7 @@ class AccountFragment : Fragment() {
             openFileChooser()
         }
 
-        val btnLogout = view.findViewById<Button>(R.id.btnLogout)
+        val btnLogout = view.findViewById<CardView>(R.id.cardLogout)
         btnLogout.setOnClickListener {
             logout()
         }
