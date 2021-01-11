@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.budiyev.android.codescanner.CodeScanner
 import com.dan.codessert.fragments.*
 import com.google.android.gms.location.*
@@ -106,7 +107,12 @@ class Dashboard : AppCompatActivity() {
             args.putDouble("latitude", last.latitude)
             args.putDouble("longitude", last.longitude)
             fragment.arguments = args
+            setCustomAnimations(
+                R.anim.fade_in,
+                R.anim.fade_out
+            )
             replace(R.id.flDashboard, fragment)
+            Animatoo.animateFade(this@Dashboard)
             commit()
         }
     }

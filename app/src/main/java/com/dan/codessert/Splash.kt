@@ -21,6 +21,8 @@ class Splash : AwesomeSplash() {
         setContentView(R.layout.activity_splash)
     }*/
     private lateinit var mAuth: FirebaseAuth
+
+
     override fun initSplash(configSplash: ConfigSplash?) {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         if (configSplash != null) {
@@ -35,6 +37,7 @@ class Splash : AwesomeSplash() {
             configSplash.animTitleDuration = 900
             configSplash.animTitleTechnique = Techniques.FadeIn
             configSplash.logoSplash = drawable.ic_coffee
+
         }
 
     }

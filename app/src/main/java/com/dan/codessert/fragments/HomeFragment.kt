@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.dan.codessert.R
 import com.dan.codessert.products.Product
+import com.google.android.material.transition.MaterialSharedAxis
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
@@ -37,6 +38,11 @@ class HomeFragment : Fragment() {
     private lateinit var tvHomeProductDessert: TextView
     private lateinit var tvHomePriceDessert: TextView
     private lateinit var ivHomeProductDessert: CircleImageView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
