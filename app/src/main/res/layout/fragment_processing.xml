@@ -7,10 +7,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:orientation="vertical">
         <TextView
+            android:layout_margin="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="40sp"
@@ -19,9 +20,30 @@
             android:layout_gravity="center"
             android:text="Estamos procesando tu orden"/>
         <ProgressBar
+            android:layout_margin="15dp"
             android:layout_gravity="center"
             android:layout_width="100dp"
             android:layout_height="100dp"/>
+        <TextView
+            android:layout_margin="15dp"
+            android:id="@+id/tvItems"
+            android:textSize="20sp"
+            android:fontFamily="@font/amaranth"
+            android:textColor="@color/teal_700"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+        <Button
+            android:layout_marginTop="100dp"
+            android:id="@+id/btnCancelOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF0000"
+            android:layout_gravity="end"
+            android:fontFamily="@font/amaranth"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:text="Cancelar orden"/>
     </LinearLayout>
 
 </FrameLayout>

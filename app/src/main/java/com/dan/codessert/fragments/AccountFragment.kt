@@ -60,6 +60,11 @@ class AccountFragment : Fragment() {
             logout()
         }
 
+        val btnMail = view.findViewById<CardView>(R.id.cardMail)
+        btnMail.setOnClickListener {
+            sendMail()
+        }
+
         mAuth = FirebaseAuth.getInstance()
         storage = FirebaseStorage.getInstance()
         storageReference = storage.reference
@@ -75,6 +80,21 @@ class AccountFragment : Fragment() {
 
         getProfilePicture()
         return view
+    }
+
+    private fun sendMail() {
+        val recipent = "contact@codessert.com"
+        val subject = "Contacto"
+        val message = "Mi opinión sobre Codessert es "
+        val rec: Array<String> = Array(2){recipent}
+        val cc: Array<String> = Array(2){"ceo@codessert.com"}
+        val i = Intent(Intent.ACTION_SEND, Uri.parse("mailto:"))
+        i.putExtra(Intent.EXTRA_EMAIL, rec)
+        i.putExtra(Intent.EXTRA_CC, cc)
+        i.putExtra(Intent.EXTRA_SUBJECT, subject)
+        i.putExtra(Intent.EXTRA_TEXT, message)
+        i.type = "message/rfc822"
+        startActivity(Intent.createChooser(i,"Enviar email"))
     }
 
     private fun logout() {

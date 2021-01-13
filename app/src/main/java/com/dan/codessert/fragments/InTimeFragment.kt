@@ -158,10 +158,10 @@ class InTimeFragment : Fragment() {
                     .update("order", "processing")
                     .addOnSuccessListener {
                         createOrder()
-                        activity!!.supportFragmentManager.beginTransaction().apply {
+                        /*activity!!.supportFragmentManager.beginTransaction().apply {
                             replace(R.id.flDashboard, Processing())
                             commit()
-                        }
+                        }*/
                     }
                     .addOnFailureListener {
                         Snackbar.make(activity!!.window.decorView.rootView, "Hubo un problema con tu orden", Snackbar.LENGTH_LONG).show()
@@ -190,10 +190,21 @@ class InTimeFragment : Fragment() {
             db.collection("users").document(user.uid).collection("inTimes")
                     .document(getIDCurrentOrder())
                     .collection("items")
-                    .document()
-                    .set(items)
+                    //.document()
+                    .add(items)
                     .addOnSuccessListener {
                         print("Items added")
+                        val preference = activity!!.getSharedPreferences("order", AppCompatActivity.MODE_PRIVATE)
+                        val editor = preference.edit()
+                        editor.apply {
+                            putString("itemsID", it.id)
+                        }
+                        editor.apply()
+
+                        activity!!.supportFragmentManager.beginTransaction().apply {
+                            replace(R.id.flDashboard, Processing())
+                            commit()
+                        }
                     }
         }
     }

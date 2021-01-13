@@ -73,8 +73,33 @@
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="200dp"
-            android:layout_marginLeft="200dp"
+            android:layout_marginTop="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardMail"
+            app:cardCornerRadius="10dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/teal_700">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_mail"/>
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contáctanos"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/amaranth"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_gravity="end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/cardLogout"
@@ -92,7 +117,7 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cerrar sesion"
+                    android:text="Cerrar sesión"
                     android:textColor="@color/white"
                     android:fontFamily="@font/amaranth"
                     android:textSize="25sp"/>
