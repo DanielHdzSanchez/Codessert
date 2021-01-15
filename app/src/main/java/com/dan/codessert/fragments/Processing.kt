@@ -1,5 +1,6 @@
 package com.dan.codessert.fragments
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
 class Processing : Fragment() {
 
@@ -108,7 +110,17 @@ class Processing : Fragment() {
                     .addSnapshotListener { value, error ->
                         if (value != null) {
                             if (value.getString("order").toString() == "done"){
-                                changeFragment()
+                                try {
+                                    MediaPlayer.create(activity!!, R.raw.bell).start()
+                                }
+                                catch (e: Exception) {
+
+                                }
+                                Timer().schedule(object: TimerTask() {
+                                    override fun run() {
+                                        changeFragment()
+                                    }
+                                },2000)
                             }
                         }
                     }

@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -68,7 +69,7 @@ class InTimeFragment : Fragment() {
         setupDesserts()
         setupDrinks()
         setupChips(view)
-        val btnOrder: Button = view.findViewById(R.id.btnOrder)
+        val btnOrder: CardView = view.findViewById(R.id.btnOrder)
         btnOrder.setOnClickListener {
             if (counterCheesecake==0
                     &&counterCookies==0
@@ -81,7 +82,7 @@ class InTimeFragment : Fragment() {
             else
                 processOrder()
         }
-        val btnEndOrder: Button = view.findViewById(R.id.btnEndOrder)
+        val btnEndOrder: CardView = view.findViewById(R.id.btnEndOrder)
         btnEndOrder.setOnClickListener {
             checkMembership()
         }

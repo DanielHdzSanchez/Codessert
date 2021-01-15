@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.dan.codessert.About
 import com.dan.codessert.MainActivity
 import com.dan.codessert.R
 import com.google.android.material.snackbar.Snackbar
@@ -65,6 +66,16 @@ class AccountFragment : Fragment() {
             sendMail()
         }
 
+        val btnCall = view.findViewById<CardView>(R.id.cardCall)
+        btnCall.setOnClickListener {
+            makeCall()
+        }
+
+        val btnAbout = view.findViewById<CardView>(R.id.cardAbout)
+        btnAbout.setOnClickListener {
+            showAbout()
+        }
+
         mAuth = FirebaseAuth.getInstance()
         storage = FirebaseStorage.getInstance()
         storageReference = storage.reference
@@ -82,6 +93,13 @@ class AccountFragment : Fragment() {
         return view
     }
 
+    private fun showAbout() {
+        activity!!.supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flDashboard, About())
+            commit()
+        }
+    }
+
     private fun sendMail() {
         val recipent = "contact@codessert.com"
         val subject = "Contacto"
@@ -95,6 +113,12 @@ class AccountFragment : Fragment() {
         i.putExtra(Intent.EXTRA_TEXT, message)
         i.type = "message/rfc822"
         startActivity(Intent.createChooser(i,"Enviar email"))
+    }
+
+    private fun makeCall() {
+        val phone = "8787000951"
+        val i = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phone"))
+        startActivity(i)
     }
 
     private fun logout() {

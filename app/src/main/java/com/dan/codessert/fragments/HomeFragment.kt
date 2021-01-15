@@ -37,6 +37,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var tvHomeProductDessert: TextView
     private lateinit var tvHomePriceDessert: TextView
+    private lateinit var tvTip: TextView
     private lateinit var ivHomeProductDessert: CircleImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,6 +65,7 @@ class HomeFragment : Fragment() {
         tvHomeProductDessert = view.findViewById(R.id.tvHomeProductDessert)
         tvHomePriceDessert = view.findViewById(R.id.tvHomePriceDessert)
         ivHomeProductDessert = view.findViewById(R.id.ivHomeProductDessert)
+        tvTip = view.findViewById(R.id.tvTip)
 
         getRecommendation()
 
@@ -150,6 +152,23 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+
+        db.collection("tips")
+            .get()
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    val tips: ArrayList<String> = ArrayList()
+                    for (document: DocumentSnapshot in it.result!!) {
+                        val tip: String = document.getString("name").toString()
+                        tips.add(tip)
+                    }
+                    val tipsSize = tips.size
+                    if (tipsSize != 0) {
+                        val randomTip: String = tips[Random.nextInt(tipsSize)]
+                        tvTip.text = randomTip
+                    }
+                }
+            }
     }
 
     private fun getProductImage(id: String, product: String) {

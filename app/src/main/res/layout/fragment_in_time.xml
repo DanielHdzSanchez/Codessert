@@ -14,16 +14,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <!--<TextView
-                android:id="@+id/tvTimer"
-                android:text="00:00"
-                android:layout_gravity="center"
-                android:fontFamily="@font/amaranth"
-                android:textColor="@color/purple_700"
-                android:textSize="30sp"
-                android:layout_width="wrap_content"
-                android:visibility="invisible"
-                android:layout_height="wrap_content"/>-->
             <TextView
                 android:text="Bebidas"
                 android:fontFamily="@font/amaranth"
@@ -123,21 +113,38 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <Button
+                    <androidx.cardview.widget.CardView
                         android:id="@+id/btnOrder"
-                        android:text="Ordenar"
+                        android:layout_margin="5dp"
                         android:layout_width="wrap_content"
-                        android:textColor="@color/white"
-                        android:backgroundTint="@color/purple_700"
-                        android:layout_height="wrap_content"/>
-                    <Button
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/purple_500"
+                        android:elevation="10dp"
+                        app:cardCornerRadius="7dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Ordenar"
+                            android:fontFamily="@font/amaranth"
+                            android:textSize="20sp"
+                            android:padding="7dp"
+                            android:layout_height="match_parent"/>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
                         android:id="@+id/btnEndOrder"
+                        android:layout_margin="5dp"
                         android:layout_width="wrap_content"
-                        android:textColor="@color/white"
-                        android:layout_gravity="bottom"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#FF0000"
-                        android:text="terminar"/>
+                        android:elevation="10dp"
+                        app:cardCornerRadius="7dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Terminar"
+                            android:fontFamily="@font/amaranth"
+                            android:textSize="20sp"
+                            android:padding="7dp"
+                            android:layout_height="match_parent"/>
+                    </androidx.cardview.widget.CardView>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
