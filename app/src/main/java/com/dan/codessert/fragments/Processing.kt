@@ -21,13 +21,19 @@ class Processing : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    private var orderReady = true
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_processing, container, false)
         auth = FirebaseAuth.getInstance()
         val btnCancelOrder = view.findViewById<Button>(R.id.btnCancelOrder)
+
+        checkOrder()
+        getOrder()
+
         btnCancelOrder.setOnClickListener {
+            orderReady = false
             val user = auth.currentUser
             if (user != null) {
                 db.collection("users")
@@ -36,12 +42,11 @@ class Processing : Fragment() {
                         .document(getIDCurrentOrder())
                         .update("order", "done")
                         .addOnSuccessListener {
-                            changeFragment()
+                            //changeFragment()
+                            checkOrder()
                         }
             }
         }
-        checkOrder()
-        getOrder()
         return view
     }
 
@@ -110,11 +115,13 @@ class Processing : Fragment() {
                     .addSnapshotListener { value, error ->
                         if (value != null) {
                             if (value.getString("order").toString() == "done"){
-                                try {
-                                    MediaPlayer.create(activity!!, R.raw.bell).start()
-                                }
-                                catch (e: Exception) {
+                                if (orderReady) {
+                                    try {
+                                        MediaPlayer.create(activity!!, R.raw.bell).start()
+                                    }
+                                    catch (e: Exception) {
 
+                                    }
                                 }
                                 Timer().schedule(object: TimerTask() {
                                     override fun run() {

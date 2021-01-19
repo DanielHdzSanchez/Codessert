@@ -262,10 +262,6 @@ class InTimeFragment : Fragment() {
         dessertsAdapter!!.setOnItemClickListener(object : DessertAdapter.OnItemClickListener {
             override fun onItemClick(documentSnapshot: DocumentSnapshot, position: Int) {
                 when (documentSnapshot["name"]) {
-                    /*Crear un metodo que lleve la cuenta de cada chip, y en estos casos
-                    * sumar 1 al contador de cada chip
-                    *
-                    * ponerle listener a cada chip para que decremente en 1 la cantidad de items de esa categoria, cuando llegue a 0, el chip no se muestra*/
                     "Galletas" -> {
                         counterCookies++
                         changeViews(counterCookies, chipCookies)
@@ -338,12 +334,28 @@ class InTimeFragment : Fragment() {
                                         val outTime: Long = System.currentTimeMillis()
                                         val inTimeAux = it.getTimestamp("time")!!.toDate()
                                         val inTime = inTimeAux.time
-                                        val totalTime = convertFromDuration(outTime) - convertFromDuration(inTime)
-                                        val charge = totalTime*70
+                                        val hoursDif = getHours(outTime) - getHours(inTime)
+                                        val minutesDif = getMinutes(outTime) - getMinutes(inTime)
+                                        var charge =0
+                                        when (hoursDif) {
+                                            0 -> charge = (minutesDif*1.16).toInt()
+                                            in 1..Int.MAX_VALUE -> charge = ((hoursDif*70)+(minutesDif*1.16)).toInt()
+                                        }
+                                        //val charge = totalTime*70
                                         val dialog = AlertDialog.Builder(activity!!)
                                                 with(dialog) {
                                                     setTitle("Terminar")
-                                                    setMessage("Hora de entrada: ${Date(outTime)}, Hora de salida: ${inTimeAux}Por favor, pasa a la caja a pagar \$$charge. Gracias por tu visita.")
+                                                    var msg = ""
+                                                    val str1 = when (getMinutes(inTime)) {
+                                                        in 0..9 -> "Hora de entrada: ${getHours(inTime)}:0${getMinutes(inTime)}"
+                                                        else -> "Hora de entrada: ${getHours(inTime)}:${getMinutes(inTime)}"
+                                                    }
+                                                    val str2 = when (getMinutes(outTime)) {
+                                                        in 0..9 -> "\nHora de salida: ${getHours(outTime)}:0${getMinutes(outTime)} \nPor favor, pasa a la caja a pagar $$charge. Gracias por tu visita."
+                                                        else -> "\nHora de salida: ${getHours(outTime)}:${getMinutes(outTime)} \nPor favor, pasa a la caja a pagar $$charge. Gracias por tu visita."
+                                                    }
+                                                    msg = "$str1 $str2"
+                                                    setMessage(msg)
                                                     setNeutralButton("Ok") { _: DialogInterface, _: Int ->
                                                         finishOrderingSession()
                                                     }
@@ -355,7 +367,7 @@ class InTimeFragment : Fragment() {
         }
     }
 
-    private fun convertFromDuration(timeInSeconds: Long): Int {
+    private fun getHours(timeInSeconds: Long): Int {
         var time = timeInSeconds
         val date = Date(time)
         val hours = date.hours
@@ -365,6 +377,12 @@ class InTimeFragment : Fragment() {
         time %= 60
         val seconds = time*/
         return hours
+    }
+
+    private fun getMinutes(time: Long): Int {
+        val date = Date(time)
+        val minutes = date.minutes
+        return minutes
     }
 
     private fun finishOrderingSession() {
